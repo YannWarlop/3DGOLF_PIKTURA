@@ -6,9 +6,8 @@ using DG.Tweening;
 using UnityEngine.Serialization;
 using Cinemachine;
 
-public class CameraSwitchBehaviourCinemachine : MonoBehaviour
+public class CameraGeneralBahviour : MonoBehaviour
 {
-    [FormerlySerializedAs("_cameraTarget")]
     [Header("References - Cameras")]
     [SerializeField] private GameObject _vcRoom;
     [SerializeField] private GameObject _vcPlayer;
@@ -39,7 +38,6 @@ public class CameraSwitchBehaviourCinemachine : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(_classicCamera.transform.position);
         if (Input.GetKeyDown(KeyCode.Space) && !_onTransition) CameraPerspectiveSwitch();
         if (_onRoomView)
         {
@@ -49,7 +47,6 @@ public class CameraSwitchBehaviourCinemachine : MonoBehaviour
     }
     private void CameraPerspectiveSwitch()
     {
-        Debug.Log("Camera Perspective Switch");
         _onTransition = true; // On flag comme en transition -> Plus d'inputs autorisées
         if (_onRoomView) // Si vue de Room
         {
