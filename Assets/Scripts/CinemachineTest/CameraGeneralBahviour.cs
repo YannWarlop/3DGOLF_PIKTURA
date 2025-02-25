@@ -24,8 +24,8 @@ public class CameraGeneralBahviour : MonoBehaviour
     private Matrix4x4 _orthographicMatrix;
     private Matrix4x4 _perspectiveMatrix;
     
-    private bool _onRoomView; // Si vue Room ou vue Ball
-    private bool _onTransition; // Si la camera est en transition (Pour eviter les inputs pendant la transition
+    public bool _onRoomView; // Si vue Room ou vue Ball
+    public bool _onTransition; // Si la camera est en transition (Pour eviter les inputs pendant la transition
     private Vector3 _roomTargetRotation;
     private void Start()
     {
