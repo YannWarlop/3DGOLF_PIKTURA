@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MileStoneVersion/MainMenu.unity
+    guid: 33616f8e2a1391841a1f43b212cb55c9
+  - enabled: 1
+    path: Assets/Scenes/MileStoneVersion/LV1.unity
+    guid: f601fdfe041f7d14cac8dec36f8ce1ec
+  - enabled: 1
+    path: Assets/Scenes/MileStoneVersion/LV2.unity
+    guid: acd5159ec2b0b614c8d72f42d91450f3
+  - enabled: 1
+    path: Assets/Scenes/MileStoneVersion/LV3.unity
+    guid: 141bd61a54e28034883a6b74a6bc0d6a
   m_configObjects: {}
