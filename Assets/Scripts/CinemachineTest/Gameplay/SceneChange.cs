@@ -15,6 +15,7 @@ public class SceneChange : MonoBehaviour
             if (winLoseCondition.WinLoseFlag == "Win")SceneManager.LoadScene(_nextSceneName);
             else if (winLoseCondition.WinLoseFlag == "Lose")SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        if (Input.GetKeyDown(KeyCode.R))SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void StartGame() {
         SceneManager.LoadScene(_nextSceneName); 
