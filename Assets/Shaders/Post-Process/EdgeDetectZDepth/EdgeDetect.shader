@@ -43,15 +43,17 @@
                 int x, y;
                 fixed4 col = tex2D(_MainTex, i.uv);
                 float depth = tex2D(_CameraDepthTexture, i.uv).r;
-                depth = (AdjustedDepth(Linear01Depth(depth)));
+                depth = Linear01Depth(AdjustedDepth(depth));
+                depth = (depth*(depth+5));
                 
-                float n = AdjustedDepth(Linear01Depth(tex2D(_CameraDepthTexture, i.uv + _CameraDepthTexture_TexelSize * float2(0, 1)).r));
-                float e = AdjustedDepth(Linear01Depth(tex2D(_CameraDepthTexture, i.uv + _CameraDepthTexture_TexelSize * float2(1, 0)).r));
-                float s = AdjustedDepth(Linear01Depth(tex2D(_CameraDepthTexture, i.uv + _CameraDepthTexture_TexelSize * float2(0, -1)).r));
-                float w = AdjustedDepth(Linear01Depth(tex2D(_CameraDepthTexture, i.uv + _CameraDepthTexture_TexelSize * float2(-1, 0)).r));
+                float n = Linear01Depth(AdjustedDepth(tex2D(_CameraDepthTexture, i.uv + _CameraDepthTexture_TexelSize * float2(0, 1)).r));
+                float e = Linear01Depth(AdjustedDepth(tex2D(_CameraDepthTexture, i.uv + _CameraDepthTexture_TexelSize * float2(1, 0)).r));
+                float s = Linear01Depth(AdjustedDepth(tex2D(_CameraDepthTexture, i.uv + _CameraDepthTexture_TexelSize * float2(0, -1)).r));
+                float w = Linear01Depth(AdjustedDepth(tex2D(_CameraDepthTexture, i.uv + _CameraDepthTexture_TexelSize * float2(-1, 0)).r));
                 
-                if (n - s > 0.001 || w - e > 0.001 || e - w > 0.001 || s - n > 0.001)
+                if (n - s > 0.001 || w - e > 0.0001 || e - w > 0.0001 || s - n > 0.0001)
                     col = _BorderColor;
+                
                 return col;
             }
             ENDCG
