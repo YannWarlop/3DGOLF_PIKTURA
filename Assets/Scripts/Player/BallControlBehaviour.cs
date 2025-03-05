@@ -15,7 +15,10 @@ public class BallControlBehaviour : MonoBehaviour
     [SerializeField] private LineRenderer _lineTrajectory;
     [SerializeField] private GameObject _cameratargetPlayer;
     [SerializeField] CameraGeneralBahviour cameraGeneralBahviour; //Infos de CameraState Necessaire
-
+    
+    //[Header("References - FX")]
+    //[SerializeField] private GameObject _impactFX;
+    
     [Header("Attributes")] 
     [SerializeField] [Range(0f, 5f)] private float _aimSensitivity = 1f; //Sensi Multiplier de visée
     private CinemachineFreeLook _vcCinemachineCamera;
@@ -24,7 +27,7 @@ public class BallControlBehaviour : MonoBehaviour
     // Shoot Related
     private Vector3 _predictedDirectionXYZ;
     private Vector2 _mouseAim = new Vector2(0,0);
-    private float _shootForce = 0f;
+    private float _shootForce = 2.5f;
     void Start()
     {
         //Setup
@@ -44,7 +47,11 @@ public class BallControlBehaviour : MonoBehaviour
             //Power
             MousePower();
             //Shoot
-            if (Input.GetMouseButtonDown(0) && _shootForce > 0.1f) _ballRigidbody.AddForce(_predictedDirectionXYZ.normalized * (_shootForce), ForceMode.Impulse ); //Si au moins 1 farce, on peut shoot
+            if (Input.GetMouseButtonDown(0) && _shootForce > 0.1f) {
+                _ballRigidbody.AddForce(_predictedDirectionXYZ.normalized * (_shootForce), ForceMode.Impulse); //Si au moins 1 farce, on peut shoot
+                trajectoryPredictor.SetTrajectoryVisible(false);
+                trajectoryPredictor.enabled = false; //On shoot disable preview
+            }
             //View
             if (Input.GetMouseButton(1)) {
                 //Set sur input Souris
@@ -60,7 +67,8 @@ public class BallControlBehaviour : MonoBehaviour
             
             if (_ballRigidbody.velocity.magnitude < 0.01f) //SSI BALLE IMMOBILE - Predicition + Shoot;
             {
-                trajectoryPredictor.enabled = true;
+                trajectoryPredictor.SetTrajectoryVisible(true);
+                _lineTrajectory.enabled = true;
                 
                 //Trajectory Prevew
                 BallProperties _properties() { //Data Fetch
@@ -75,14 +83,16 @@ public class BallControlBehaviour : MonoBehaviour
                 trajectoryPredictor.PredictTrajectory(_properties()); //Predict Start
             } 
             else {
+                trajectoryPredictor.SetTrajectoryVisible(false);
                 trajectoryPredictor.enabled = false; //Si mouvement , no preview
                 ResetProperties(); //Reset Values
             }
         }
         else if (cameraGeneralBahviour._onRoomView == true)
         {
-            trajectoryPredictor.enabled = false; //Si no view , no preview
-            ResetProperties(); //Reset Values
+            //Reset Shoot quand switch de camera
+            //trajectoryPredictor.enabled = false; //Si no view , no preview
+            //ResetProperties(); //Reset Values
         }
     }
     private void MouseAim()
@@ -109,6 +119,10 @@ public class BallControlBehaviour : MonoBehaviour
     private void ResetProperties()
     {
         _predictedDirectionXYZ = Vector3.forward;
-        _shootForce = 0f;
+        _shootForce = 2.5f;
     }
+
+    //private void OnCollisionEnter(Collision col) {
+    //    Instantiate(_impactFX,gameObject.transform.position,Quaternion.identity);
+    //}
 }

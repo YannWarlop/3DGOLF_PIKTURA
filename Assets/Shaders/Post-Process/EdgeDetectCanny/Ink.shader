@@ -27,14 +27,14 @@
             float2 uv : TEXCOORD0;
         };
 
-        struct v2f {
+        struct Interpolators {
             float2 uv : TEXCOORD0;
             float4 vertex : SV_POSITION;
             float4 screenPosition : TEXCOORD1;
         };
 
-        v2f vp(VertexData v) {
-            v2f f;
+        Interpolators vp(VertexData v) {
+            Interpolators f;
             f.vertex = UnityObjectToClipPos(v.vertex);
             f.uv = v.uv;
             f.screenPosition = ComputeScreenPos(f.vertex);
@@ -52,7 +52,7 @@
             #pragma vertex vp
             #pragma fragment fp
 
-            fixed4 fp(v2f i) : SV_Target {
+            fixed4 fp(Interpolators i) : SV_Target {
                 return LinearRgbToLuminance(tex2D(_MainTex, i.uv));
             }
 
@@ -74,7 +74,7 @@
                 return SampleLuminance(uv);
             }
 
-            fixed4 fp(v2f i) : SV_Target {
+            fixed4 fp(Interpolators i) : SV_Target {
                 half m = SampleLuminance(i.uv);
                 half n = SampleLuminance(i.uv, 0, 1);
                 half e = SampleLuminance(i.uv, 1, 0);
@@ -96,7 +96,7 @@
             #pragma vertex vp
             #pragma fragment fp
 
-            fixed4 fp(v2f i) : SV_Target {
+            fixed4 fp(Interpolators i) : SV_Target {
                 int x, y;
 
                 int3x3 Kx = {
@@ -138,7 +138,7 @@
             #pragma vertex vp
             #pragma fragment fp
 
-            fixed4 fp(v2f i) : SV_Target {
+            fixed4 fp(Interpolators i) : SV_Target {
                 int x, y;
 
                 int3x3 Kx = {
@@ -180,7 +180,7 @@
             #pragma vertex vp
             #pragma fragment fp
 
-            float4 fp(v2f i) : SV_Target {
+            float4 fp(Interpolators i) : SV_Target {
                 int x, y;
 
                 int3x3 Kx = {
@@ -223,7 +223,7 @@
             #pragma vertex vp
             #pragma fragment fp
 
-            float4 fp(v2f i) : SV_Target {
+            float4 fp(Interpolators i) : SV_Target {
                 float4 canny = tex2D(_MainTex, i.uv);
 
                 float Mag = canny.a;
@@ -253,7 +253,7 @@
             #pragma vertex vp
             #pragma fragment fp
 
-            float4 fp(v2f i) : SV_Target {
+            float4 fp(Interpolators i) : SV_Target {
                 float Mag = tex2D(_MainTex, i.uv).a;
 
                 float4 result = 0.0f;
@@ -294,7 +294,7 @@
                 return 0.0f;
             }
 
-            float4 fp(v2f i) : SV_Target {
+            float4 fp(Interpolators i) : SV_Target {
                 float strength = tex2D(_MainTex, i.uv).a;
 
                 float4 result = strength;
@@ -315,7 +315,7 @@
             #pragma vertex vp
             #pragma fragment fp
 
-            float4 fp(v2f i) : SV_Target {
+            float4 fp(Interpolators i) : SV_Target {
                 int x, y;
                 float4 ink = tex2D(_MainTex, i.uv);
                 float luminance = tex2D(_LuminanceTex, i.uv).r;
@@ -344,7 +344,7 @@
             #pragma vertex vp
             #pragma fragment fp
 
-            float4 fp(v2f i) : SV_Target {
+            float4 fp(Interpolators i) : SV_Target {
                 int x, y;
                 float4 ink = tex2D(_MainTex, i.uv);
 
@@ -382,7 +382,7 @@
 
             #include "Random.cginc"
 
-            float4 fp(v2f i) : SV_Target {
+            float4 fp(Interpolators i) : SV_Target {
                 float luminance = tex2D(_MainTex, i.uv).a;
 
 
@@ -411,7 +411,7 @@
 
             #include "Random.cginc"
 
-            float4 fp(v2f i) : SV_Target {
+            float4 fp(Interpolators i) : SV_Target {
                 float edge = tex2D(_MainTex, i.uv).a;
                 float4 stipple = tex2D(_StippleTex, i.uv);
                 float depth = 1 - Linear01Depth(tex2D(_CameraDepthTexture, i.uv).r);
@@ -438,7 +438,7 @@
 
             #include "Random.cginc"
 
-            float4 fp(v2f i) : SV_Target {
+            float4 fp(Interpolators i) : SV_Target {
                 float4 ink = tex2D(_InkTex, i.uv);
                 float4 paper = tex2D(_PaperTex, i.uv);
                 float col = tex2D(_MainTex, i.uv).r;

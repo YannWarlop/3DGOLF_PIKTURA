@@ -17,7 +17,7 @@ public class WinLoseCondition : MonoBehaviour
         if (_playerRb.velocity.magnitude < 0.05f && !_isLit)
             WinLoseFlag = "Lose";
     }
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerStay(Collider other) {
         if (other.CompareTag("Finish") && _playerRb.velocity.magnitude < 1.5f) WinLoseFlag = "Win"; // Si enter basse vitesse dans Finish -> WinCon
         if (other.CompareTag("IsLit")) _isLit = true; // Si entre dans Lumière -> Flag Bool
         

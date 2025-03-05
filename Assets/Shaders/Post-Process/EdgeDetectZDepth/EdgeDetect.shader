@@ -51,7 +51,7 @@
                 float s = Linear01Depth(AdjustedDepth(tex2D(_CameraDepthTexture, i.uv + _CameraDepthTexture_TexelSize * float2(0, -1)).r));
                 float w = Linear01Depth(AdjustedDepth(tex2D(_CameraDepthTexture, i.uv + _CameraDepthTexture_TexelSize * float2(-1, 0)).r));
                 
-                if (n - s > 0.001 || w - e > 0.0001 || e - w > 0.0001 || s - n > 0.0001)
+                if (n - s > 0.01 || w - e > 0.01 || e - w > 0.01 || s - n > 0.01)
                     col = _BorderColor;
                 
                 return col;
