@@ -249,6 +249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lvl1walled
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f8e065ce78ae79e46b251514aad10849, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6588434171230858588, guid: f8e065ce78ae79e46b251514aad10849, type: 3}
