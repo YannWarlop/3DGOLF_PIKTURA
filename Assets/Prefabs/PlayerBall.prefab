@@ -152,6 +152,7 @@ MonoBehaviour:
   _lineTrajectory: {fileID: 0}
   _cameratargetPlayer: {fileID: 0}
   cameraGeneralBahviour: {fileID: 0}
+  _impactFX: {fileID: 8139973339810397382, guid: f6c8ad31a41422f4090eb630fa212ebd, type: 3}
   _aimSensitivity: 0.5
 --- !u!114 &7164824927150381510
 MonoBehaviour:

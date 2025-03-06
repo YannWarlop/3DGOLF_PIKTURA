@@ -1,6 +1,7 @@
  Shader "Unlit/VFXBase"{
     Properties{
         _Color ("Color", Color) = (1,1,1,1)
+        _StartTime ("StartTime", Float) = 0
     }
     SubShader{
         Tags {
@@ -33,7 +34,7 @@
             };
 
             float4 _Color;
-            
+            float _StartTime;
             float InverseLerp( float a, float b, float v) {  
             return (v-a) / (b-a);
             }
@@ -41,7 +42,7 @@
             Interpolators vert (MashData v)
             {
                 Interpolators o;
-                float lT = (_Time.y / 1.5)% 1;
+                float lT = ((_Time.y - _StartTime) * 2)% 1;
                 float TFunctionxz = (lT*(1-lT)*(1-lT)*6);
                 float TFunctiony = (lT*(1-lT*2)*(1-lT)*6);
                 v.vertex.xz *= TFunctionxz;

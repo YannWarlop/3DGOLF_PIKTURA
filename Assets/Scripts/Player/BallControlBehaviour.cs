@@ -16,8 +16,8 @@ public class BallControlBehaviour : MonoBehaviour
     [SerializeField] private GameObject _cameratargetPlayer;
     [SerializeField] CameraGeneralBahviour cameraGeneralBahviour; //Infos de CameraState Necessaire
     
-    //[Header("References - FX")]
-    //[SerializeField] private GameObject _impactFX;
+    [Header("References - FX")]
+    [SerializeField] private GameObject _impactFX;
     
     [Header("Attributes")] 
     [SerializeField] [Range(0f, 5f)] private float _aimSensitivity = 1f; //Sensi Multiplier de visée
@@ -122,7 +122,7 @@ public class BallControlBehaviour : MonoBehaviour
         _shootForce = 2.5f;
     }
 
-    //private void OnCollisionEnter(Collision col) {
-    //    Instantiate(_impactFX,gameObject.transform.position,Quaternion.identity);
-    //}
+    private void OnCollisionEnter(Collision col) {
+        Instantiate(_impactFX,gameObject.transform.position,Quaternion.identity);
+    }
 }

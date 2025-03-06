@@ -6,11 +6,19 @@ using UnityEngine.ProBuilder;
 
 public class VFXManager_Impact : MonoBehaviour
 {
-    private float StartTime;
+    private float startTime;
+    private Material VFXMaterial;
     void Start() {
-        StartTime = Time.realtimeSinceStartup;
+        startTime = Time.time;
+        VFXMaterial = GetComponent<MeshRenderer>().material;
+        VFXMaterial.SetFloat("_StartTime", Time.time );
+        Debug.Log("VFXManager_Impact Start");
     }
     void Update() {
-        if (Mathf.Abs(Time.realtimeSinceStartup - StartTime) > 0.5f) Destroy(gameObject);
+        if (Mathf.Abs(Time.time - startTime) > 0.5f)
+        {
+            Destroy(gameObject);
+            Debug.Log("VFXManager_Impact Destroy");
+        }
     }
 }
