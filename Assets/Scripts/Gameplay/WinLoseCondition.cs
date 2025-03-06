@@ -17,11 +17,21 @@ public class WinLoseCondition : MonoBehaviour
         if (_playerRb.velocity.magnitude < 0.05f && !_isLit)
             WinLoseFlag = "Lose";
     }
+
     private void OnTriggerStay(Collider other) {
-        if (other.CompareTag("Finish") && _playerRb.velocity.magnitude < 1.5f) WinLoseFlag = "Win"; // Si enter basse vitesse dans Finish -> WinCon
-        if (other.CompareTag("IsLit")) _isLit = true; // Si entre dans Lumière -> Flag Bool
-        
+        if (other.CompareTag("Finish") && _playerRb.velocity.magnitude < 1.5f)
+            WinLoseFlag = "Win"; // Si enter basse vitesse dans Finish -> WinCon
+        if (other.CompareTag("IsLit")) {
+            RaycastHit _hit;
+            // Calculate Ray direction
+            Vector3 _direction = other.transform.position - _playerRb.transform.position;
+            if (Physics.Raycast(transform.position, _direction, out _hit, _direction.magnitude)) { //On exclut les triggers pour n'avoir que les RB en hit
+                _isLit = false;
+            }
+            else _isLit = true;
+        }
     }
+
     private void OnTriggerExit(Collider other) { // Si exit de light Zone
         if (other.CompareTag("IsLit")) _isLit = false; //Flag le Bool
     }
