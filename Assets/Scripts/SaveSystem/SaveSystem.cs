@@ -7,7 +7,7 @@ public static class SaveSystem
     public static void SavePlayer(PlayerData playerData)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/PlayerData.sv"; // faudra changer le fichier mskn
+        string path = Application.persistentDataPath + "/PlayerData.sv"; 
         FileStream stream = new FileStream(path, FileMode.Create); 
         
         SaveData data = new SaveData(playerData);
