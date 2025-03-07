@@ -1919,6 +1919,8 @@ MonoBehaviour:
   _cameratargetPlayer: {fileID: 1054506585}
   cameraGeneralBahviour: {fileID: 1905979139}
   _impactFX: {fileID: 0}
+  _impactSFX: {fileID: 0}
+  _shootSFX: {fileID: 0}
   _aimSensitivity: 1
 --- !u!114 &1202716045
 MonoBehaviour:
@@ -3713,6 +3715,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5758642302177726743
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3929219120023454678, guid: d1612b68d88bd0a45bb04435a26e6470, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929219120023454678, guid: d1612b68d88bd0a45bb04435a26e6470, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929219120023454678, guid: d1612b68d88bd0a45bb04435a26e6470, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929219120023454678, guid: d1612b68d88bd0a45bb04435a26e6470, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929219120023454678, guid: d1612b68d88bd0a45bb04435a26e6470, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929219120023454678, guid: d1612b68d88bd0a45bb04435a26e6470, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929219120023454678, guid: d1612b68d88bd0a45bb04435a26e6470, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929219120023454678, guid: d1612b68d88bd0a45bb04435a26e6470, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929219120023454678, guid: d1612b68d88bd0a45bb04435a26e6470, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929219120023454678, guid: d1612b68d88bd0a45bb04435a26e6470, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8650899287036755751, guid: d1612b68d88bd0a45bb04435a26e6470, type: 3}
+      propertyPath: m_Name
+      value: WindPushPull
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d1612b68d88bd0a45bb04435a26e6470, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3737,3 +3796,4 @@ SceneRoots:
   - {fileID: 389942060}
   - {fileID: 803931177}
   - {fileID: 1910397287}
+  - {fileID: 5758642302177726743}
