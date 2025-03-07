@@ -5,6 +5,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Serialization;
 using Cinemachine;
+using Cinemachine.Utility;
 
 public class BallControlBehaviour : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class BallControlBehaviour : MonoBehaviour
     
     [Header("References - FX")]
     [SerializeField] private GameObject _impactFX;
+    
+    [Header("References - SFX")]
+    [SerializeField] private AudioClip _impactSFX;
     
     [Header("Attributes")] 
     [SerializeField] [Range(0f, 5f)] private float _aimSensitivity = 1f; //Sensi Multiplier de visée
@@ -124,5 +128,7 @@ public class BallControlBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision col) {
         Instantiate(_impactFX,gameObject.transform.position,Quaternion.identity);
+        SoundFXManager.Instance.PlaySoundFX(_impactSFX, 1f, col.transform);
+        Debug.Log("FX !");
     }
 }
