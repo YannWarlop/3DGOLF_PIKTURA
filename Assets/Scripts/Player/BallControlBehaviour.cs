@@ -21,7 +21,8 @@ public class BallControlBehaviour : MonoBehaviour
     [SerializeField] private GameObject _impactFX;
     
     [Header("References - SFX")]
-    [SerializeField] private AudioClip _impactSFX;
+    [SerializeField] private AudioClip _impactSFX; //Impact avec sol
+    [SerializeField] private AudioClip _shootSFX; //Shoot de balle
     
     [Header("Attributes")] 
     [SerializeField] [Range(0f, 5f)] private float _aimSensitivity = 1f; //Sensi Multiplier de visée
@@ -55,6 +56,7 @@ public class BallControlBehaviour : MonoBehaviour
                 _ballRigidbody.AddForce(_predictedDirectionXYZ.normalized * (_shootForce), ForceMode.Impulse); //Si au moins 1 farce, on peut shoot
                 trajectoryPredictor.SetTrajectoryVisible(false);
                 trajectoryPredictor.enabled = false; //On shoot disable preview
+                SoundFXManager.Instance.PlaySoundFX(_shootSFX,Mathf.Clamp01(_shootForce)/2, gameObject.transform);
             }
             //View
             if (Input.GetMouseButton(1)) {
