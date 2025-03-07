@@ -130,7 +130,7 @@ public class BallControlBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision col) {
         Instantiate(_impactFX,gameObject.transform.position,Quaternion.identity);
-        SoundFXManager.Instance.PlaySoundFX(_impactSFX, Mathf.Clamp01(_ballRigidbody.velocity.magnitude)/2, col.transform);
+        SoundFXManager.Instance.PlaySoundFX(_impactSFX, Mathf.Clamp01(_ballRigidbody.velocity.magnitude)/2, gameObject.transform);
         Debug.Log("FX !");
     }
 }
