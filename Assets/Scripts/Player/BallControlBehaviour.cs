@@ -35,11 +35,13 @@ public class BallControlBehaviour : MonoBehaviour
     private Vector2 _mouseAim = new Vector2(0,0);
     private float _shootForce = 2.5f;
     private bool _isOnMovingObject = false;
+    private bool _canshoot = false;
     void Start()
     {
         //Setup
         _predictedDirectionXYZ = Vector3.forward;
         _isOnMovingObject = false;
+        _canshoot = false;
         
         //Components
         _vcCinemachineCamera = _vcPlayer.GetComponent<CinemachineFreeLook>();
@@ -50,13 +52,14 @@ public class BallControlBehaviour : MonoBehaviour
     
     void Update()
     {
+        if(_ballRigidbody.velocity.magnitude < 0.1f) _canshoot = true;
         _cameratargetPlayer.transform.position = this.transform.position; // On aligne la cible camera sur la balle
         if (cameraGeneralBahviour._onRoomView == false && cameraGeneralBahviour._onTransition == false) // Si on est bien sur la POV Player
         {
             //Power
             MousePower();
             //Shoot
-            if (Input.GetMouseButtonDown(0) && _shootForce > 0.1f) {
+            if (Input.GetMouseButtonDown(0) && _shootForce > 0.1f && (_ballRigidbody.velocity.magnitude < 0.1f ||_isOnMovingObject)) {
                 _ballRigidbody.AddForce(_predictedDirectionXYZ.normalized * (_shootForce), ForceMode.Impulse); //Si au moins 1 farce, on peut shoot
                 trajectoryPredictor.SetTrajectoryVisible(false);
                 trajectoryPredictor.enabled = false; //On shoot disable preview
