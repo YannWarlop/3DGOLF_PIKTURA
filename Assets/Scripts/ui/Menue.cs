@@ -25,6 +25,22 @@ public class Menue : MonoBehaviour
     {
         SceneManager.LoadScene("Credits");
     }
+    public void OnclickLv1()
+    {
+        SceneManager.LoadScene("LV1");
+    }
+    public void OnclickLv2()
+    {
+        SceneManager.LoadScene("LV2");
+    }
+    public void OnclickLv3()
+    {
+        SceneManager.LoadScene("LV3");
+    }
+    public void OnclickReturn()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     void Start()
     {
         
