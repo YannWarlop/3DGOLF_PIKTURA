@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   edgeShader: {fileID: 4800000, guid: dd09a332d65cf4d4b9b1b79bde2a75bc, type: 3}
-  borderColor: {r: 1, g: 0, b: 0, a: 0}
+  borderColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!114 &14570370
 MonoBehaviour:
   m_ObjectHideFlags: 0

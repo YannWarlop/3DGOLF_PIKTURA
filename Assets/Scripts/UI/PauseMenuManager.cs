@@ -13,6 +13,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _settingsMenu;
     [SerializeField] private GameObject _quitMenu;
+    [SerializeField] private GameObject _tutorialMenu;
     [SerializeField] AudioMixer _audioMixer;
     [SerializeField] private Slider _audioVolumeSlider;
 
@@ -50,5 +51,10 @@ public class PauseMenuManager : MonoBehaviour
     {
         
         _audioMixer.SetFloat("MasterVolume", Mathf.Log10(_audioVolumeSlider.value)*20);
+    }
+
+    public void OpenTutorial()
+    {
+        _tutorialMenu.SetActive(true);
     }
 }

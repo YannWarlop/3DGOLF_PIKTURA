@@ -6991,7 +6991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   edgeShader: {fileID: 4800000, guid: dd09a332d65cf4d4b9b1b79bde2a75bc, type: 3}
-  borderColor: {r: 1, g: 0, b: 0, a: 0}
+  borderColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &1924885146 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7862391691550088030, guid: e11b7222571586d4b8d3801a386701d0, type: 3}
