@@ -16,6 +16,10 @@ public class TrajectoryPredictor : MonoBehaviour
         Physics.queriesHitTriggers = false;
     }
 
+    private void Start() {
+        Physics.queriesHitTriggers = false;
+    }
+
     public void PredictTrajectory(BallProperties projectile)
     {
         Vector3 velocity =  projectile.direction * (projectile.initialForce / projectile.mass);

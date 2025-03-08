@@ -7,6 +7,7 @@ public class LightToggler : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private List<GameObject> _lights;
+    [SerializeField] private Animator _animator;
     
     [Header("References - Sounds")]
     [SerializeField] private AudioClip _toggleSound;
@@ -18,6 +19,7 @@ public class LightToggler : MonoBehaviour
             {
                 if (_light != null) _light.SetActive(true);
             }
+            if (_animator != null) _animator.SetTrigger("Toggled");
         }
     }
 }
