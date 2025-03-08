@@ -14,7 +14,7 @@ public class LightToggler : MonoBehaviour
     [Header("References - Sounds")]
     [SerializeField] private AudioClip _toggleSound;
 
-    private void Start()
+    private void Awake()
     {
         //BRUTEFORCE SALE
         if (SceneManager.GetActiveScene().name == "LV5") _animator.SetTrigger("ToggledLV5");

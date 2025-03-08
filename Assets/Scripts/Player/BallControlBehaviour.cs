@@ -6,6 +6,7 @@ using DG.Tweening;
 using UnityEngine.Serialization;
 using Cinemachine;
 using Cinemachine.Utility;
+using UnityEngine.SceneManagement;
 
 public class BallControlBehaviour : MonoBehaviour
 {
@@ -70,7 +71,9 @@ public class BallControlBehaviour : MonoBehaviour
             else if (Input.GetMouseButtonUp(1)) {
                 //Unset sur input Souris
                 _vcCinemachineCamera.m_XAxis.m_InputAxisName = "";
+                _vcCinemachineCamera.m_XAxis.m_InputAxisValue = 0f;
                 _vcCinemachineCamera.m_YAxis.m_InputAxisName = "";
+                _vcCinemachineCamera.m_YAxis.m_InputAxisValue = 0f;
             }
             if (Input.GetMouseButton(2)) MouseAim(); //Held Mouse Aim
             
@@ -136,9 +139,15 @@ public class BallControlBehaviour : MonoBehaviour
         SoundFXManager.Instance.PlaySoundFX(_impactSFX, Mathf.Clamp01(_ballRigidbody.velocity.magnitude)/2, gameObject.transform);
         Debug.Log("FX !");
         if (col.gameObject.CompareTag("MovingObject")) _isOnMovingObject = true; // Allow Shoot if on moving platform
+        if (col.gameObject.CompareTag("DeadZone")) SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Si OOB restart LV
+        
     }
 
     private void OnCollisionExit(Collision col) {
         if (col.gameObject.CompareTag("MovingObject")) _isOnMovingObject = false; // Leave Moving Plat -> No shoot allowed
+    }
+
+    private void OnTriggerExit(Collider col) {
+        if (col.gameObject.CompareTag("DeadZone")) SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Si OOB restart LV
     }
 }

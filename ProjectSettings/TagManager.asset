@@ -7,6 +7,7 @@ TagManager:
   - IsLit
   - Interruptor
   - MovingObject
+  - DeadZone
   layers:
   - Default
   - TransparentFX
