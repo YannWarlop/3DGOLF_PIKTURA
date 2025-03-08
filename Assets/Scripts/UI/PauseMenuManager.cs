@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using Slider = UnityEngine.UI.Slider;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject _settingsMenu;
     [SerializeField] private GameObject _quitMenu;
     [SerializeField] AudioMixer _audioMixer;
-    [SerializeField] private GameObject _audioVolumeSlider;
+    [SerializeField] private Slider _audioVolumeSlider;
 
     private void Update()
     {
@@ -48,6 +49,6 @@ public class PauseMenuManager : MonoBehaviour
     public void AdjustVolume()
     {
         
-        _audioMixer.SetFloat("MasterVolume", Mathf.Log10(_audioVolumeSlider.GetComponent<Slider>().value)*20);
+        _audioMixer.SetFloat("MasterVolume", Mathf.Log10(_audioVolumeSlider.value)*20);
     }
 }
