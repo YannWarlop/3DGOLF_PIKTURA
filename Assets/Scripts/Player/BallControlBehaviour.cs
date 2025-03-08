@@ -33,10 +33,13 @@ public class BallControlBehaviour : MonoBehaviour
     private Vector3 _predictedDirectionXYZ;
     private Vector2 _mouseAim = new Vector2(0,0);
     private float _shootForce = 2.5f;
+    private bool _isOnMovingObject = false;
     void Start()
     {
         //Setup
         _predictedDirectionXYZ = Vector3.forward;
+        _isOnMovingObject = false;
+        
         //Components
         _vcCinemachineCamera = _vcPlayer.GetComponent<CinemachineFreeLook>();
         trajectoryPredictor = GetComponent<TrajectoryPredictor>();
@@ -71,7 +74,7 @@ public class BallControlBehaviour : MonoBehaviour
             }
             if (Input.GetMouseButton(2)) MouseAim(); //Held Mouse Aim
             
-            if (_ballRigidbody.velocity.magnitude < 0.01f) //SSI BALLE IMMOBILE - Predicition + Shoot;
+            if (_ballRigidbody.velocity.magnitude < 0.01f || _isOnMovingObject ) //SSI BALLE IMMOBILE - Predicition + Shoot;
             {
                 trajectoryPredictor.SetTrajectoryVisible(true);
                 _lineTrajectory.enabled = true;
@@ -132,5 +135,10 @@ public class BallControlBehaviour : MonoBehaviour
         Instantiate(_impactFX,gameObject.transform.position,Quaternion.identity);
         SoundFXManager.Instance.PlaySoundFX(_impactSFX, Mathf.Clamp01(_ballRigidbody.velocity.magnitude)/2, gameObject.transform);
         Debug.Log("FX !");
+        if (col.gameObject.CompareTag("MovingObject")) _isOnMovingObject = true; // Allow Shoot if on moving platform
+    }
+
+    private void OnCollisionExit(Collision col) {
+        if (col.gameObject.CompareTag("MovingObject")) _isOnMovingObject = false; // Leave Moving Plat -> No shoot allowed
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - IsLit
   - Interruptor
+  - MovingObject
   layers:
   - Default
   - TransparentFX
