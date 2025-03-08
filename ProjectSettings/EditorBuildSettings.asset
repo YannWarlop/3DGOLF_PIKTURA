@@ -6,21 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MileStoneVersion/MainMenu.unity
+    path: Assets/Scenes/Final/MainMenu.unity
     guid: 33616f8e2a1391841a1f43b212cb55c9
   - enabled: 1
-    path: Assets/Scenes/MileStoneVersion/LV1.unity
+    path: Assets/Scenes/Final/LV1.unity
     guid: f601fdfe041f7d14cac8dec36f8ce1ec
   - enabled: 1
-    path: Assets/Scenes/MileStoneVersion/LV2.unity
+    path: Assets/Scenes/Final/LV2.unity
     guid: acd5159ec2b0b614c8d72f42d91450f3
   - enabled: 1
-    path: Assets/Scenes/MileStoneVersion/LV3.unity
+    path: Assets/Scenes/Final/LV3.unity
     guid: 141bd61a54e28034883a6b74a6bc0d6a
   - enabled: 1
-    path: Assets/Scenes/MileStoneVersion/LV4.unity
+    path: Assets/Scenes/Final/LV4.unity
     guid: d9d4bc1f73a6ba945874be644131087a
   - enabled: 1
-    path: Assets/Scenes/MileStoneVersion/LV5.unity
+    path: Assets/Scenes/Final/LV5.unity
     guid: dff5ea917201d374699d2633c1a53152
   m_configObjects: {}
